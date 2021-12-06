@@ -1,14 +1,9 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-// naming
-// constant
-// it-else
-// test case
-// add test case
-
 public class WordFrequencyGame {
     private final static String SPACE_PATTERN = "\\s+";
+    public static final String NEWLINE_PATTERN = "\n";
 
     public String getResult(String inputSentence) {
         try {
@@ -21,7 +16,7 @@ public class WordFrequencyGame {
     }
 
     private String generateFrequencyResult(List<WordInfo> wordInfoList) {
-        StringJoiner finalOutput = new StringJoiner("\n");
+        StringJoiner finalOutput = new StringJoiner(NEWLINE_PATTERN);
         for (WordInfo wordInfo : wordInfoList) {
             String wordFrequencyCountString = wordInfo.getValue() + " " + wordInfo.getWordCount();
             finalOutput.add(wordFrequencyCountString);
