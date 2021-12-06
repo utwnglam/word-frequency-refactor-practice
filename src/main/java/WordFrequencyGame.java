@@ -4,12 +4,12 @@ import java.util.stream.Collectors;
 public class WordFrequencyGame {
     private final static String SPACE_PATTERN = "\\s+";
 
-    public String getResult(String inputStr){
-        if (inputStr.split(SPACE_PATTERN).length == 1) {
-            return inputStr + " 1";
+    public String getResult(String inputSentence) {
+        if (inputSentence.split(SPACE_PATTERN).length == 1) {
+            return inputSentence + " 1";
         } else {
             try {
-                List<WordInfo> wordInfoList = calculateWordFrequency(inputStr);
+                List<WordInfo> wordInfoList = calculateWordFrequency(inputSentence);
 
                 wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
