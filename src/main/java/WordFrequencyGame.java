@@ -1,22 +1,24 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+// naming
+// constant
+// it-else
+// test case
+// add test case
+
 public class WordFrequencyGame {
     private final static String SPACE_PATTERN = "\\s+";
 
     public String getResult(String inputSentence) {
-        if (inputSentence.split(SPACE_PATTERN).length == 1) {
-            return inputSentence + " 1";
-        } else {
-            try {
-                List<WordInfo> wordInfoList = calculateWordFrequency(inputSentence);
+        try {
+            List<WordInfo> wordInfoList = calculateWordFrequency(inputSentence);
 
-                wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+            wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
-                return generateFrequencyResult(wordInfoList);
-            } catch (Exception e) {
-                return "Calculate Error";
-            }
+            return generateFrequencyResult(wordInfoList);
+        } catch (Exception e) {
+            return "Calculate Error";
         }
     }
 
