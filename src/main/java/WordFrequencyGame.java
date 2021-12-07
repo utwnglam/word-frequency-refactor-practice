@@ -9,18 +9,12 @@ public class WordFrequencyGame {
     public String getResult(String inputSentence) {
         try {
             List<WordInfo> wordInfoList = calculateWordFrequency(inputSentence);
-            wordInfoList.sort((wordFirst, wordNext) -> wordNext.getWordCount() - wordFirst.getWordCount());
+            wordInfoList.sort(Comparator.comparingInt(WordInfo::getWordCount).reversed());
             return generateFrequencyResult(wordInfoList);
         } // catch (NullPointerException) {}
         catch (Exception exception) {
             return ERROR_MESSAGE;
         }
-    }
-
-    private String generateFrequencyResult(List<WordInfo> wordInfoList) {
-        return wordInfoList.stream()
-          .map(wordInfo -> String.format("%s %d", wordInfo.getWord(), wordInfo.getWordCount()))
-          .collect(Collectors.joining(NEWLINE_PATTERN));
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
@@ -29,5 +23,11 @@ public class WordFrequencyGame {
         return distinctWords.stream()
           .map(distinctWord -> new WordInfo(distinctWord, Collections.frequency(words, distinctWord)))
           .collect(Collectors.toList());
+    }
+
+    private String generateFrequencyResult(List<WordInfo> wordInfoList) {
+        return wordInfoList.stream()
+          .map(wordInfo -> String.format("%s %d", wordInfo.getWord(), wordInfo.getWordCount()))
+          .collect(Collectors.joining(NEWLINE_PATTERN));
     }
 }
