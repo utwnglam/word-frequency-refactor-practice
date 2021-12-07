@@ -9,11 +9,10 @@ public class WordFrequencyGame {
     public String getResult(String inputSentence) {
         try {
             List<WordInfo> wordInfoList = calculateWordFrequency(inputSentence);
-            wordInfoList.sort((wordFirst, wordSecond) -> wordSecond.getWordCount() - wordFirst.getWordCount());
+            wordInfoList.sort((wordFirst, wordNext) -> wordNext.getWordCount() - wordFirst.getWordCount());
             return generateFrequencyResult(wordInfoList);
         } // catch (NullPointerException) {}
-        catch (Exception e) {
-            // if (NullPointerException) -> special error msg
+        catch (Exception exception) {
             return ERROR_MESSAGE;
         }
     }
